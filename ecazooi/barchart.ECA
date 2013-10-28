@@ -1,0 +1,12 @@
+IMPORT standaard
+IMPORT eca_math
+IMPORT eca_string
+IMPORT simple_wordcloud
+
+# DECLARE dv = debug_publish(true)
+
+CELL 'tweetlistcell' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "tweetlistcell", "id": "myTweetlist", "title": "Tweets"})]}
+
+RULE: new_tweet_rule
+EVENT: new_tweet
+ACTION:	add_tweetlist_tweet('myTweetlist',new_tweet.json_dict)
